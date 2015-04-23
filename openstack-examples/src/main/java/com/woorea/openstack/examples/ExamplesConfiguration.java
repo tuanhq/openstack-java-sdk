@@ -7,17 +7,17 @@ import com.woorea.openstack.keystone.model.Tenant;
 
 public class ExamplesConfiguration {
 
-	public static final String KEYSTONE_AUTH_URL = "http://identity/v2.0";
+	public static final String KEYSTONE_AUTH_URL = "http://172.27.4.101:5000/v2.0";
 	
-	public static final String KEYSTONE_USERNAME = "";
+	public static final String KEYSTONE_USERNAME = "demo";
 	
-	public static final String KEYSTONE_PASSWORD = "";
+	public static final String KEYSTONE_PASSWORD = "DEMO_PASS";
 	
 	public static final String KEYSTONE_ENDPOINT = "http://keystone/v2.0";
 	
-	public static final String TENANT_NAME = "admin";
+	public static final String TENANT_NAME = "demo";
 
-	public static final String NOVA_ENDPOINT = "http://compute/v2";
+	public static final String NOVA_ENDPOINT = "http://172.27.4.101:8774/v2/";
 	
 	public static final String CEILOMETER_ENDPOINT = "";
 	

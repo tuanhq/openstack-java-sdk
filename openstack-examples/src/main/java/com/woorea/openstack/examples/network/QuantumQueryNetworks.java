@@ -31,8 +31,8 @@ public class QuantumQueryNetworks {
 		if (tenants.getList().size() > 0) {
 			// access with tenant
 			access = keystone.tokens().authenticate(new TokenAuthentication(access.getToken().getId())).withTenantId(tenants.getList().get(0).getId()).execute();
-
-			Quantum quantumClient = new Quantum(KeystoneUtils.findEndpointURL(access.getServiceCatalog(), "network",	null, "public"));
+			//KeystoneUtils.findEndpointURL(access.getServiceCatalog(), "network", null, "public")
+			Quantum quantumClient = new Quantum("http://controller:9696/v2.0");
 			quantumClient.setTokenProvider(new OpenStackSimpleTokenProvider(access.getToken().getId()));
 
 			Network networkQuery = new Network();

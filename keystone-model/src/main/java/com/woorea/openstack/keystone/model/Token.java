@@ -1,6 +1,7 @@
 package com.woorea.openstack.keystone.model;
 
 import java.util.Calendar;
+import java.util.List;
 
 public final class Token {
 
@@ -11,7 +12,8 @@ public final class Token {
 	private Calendar expires;
 
 	private Tenant tenant;
-
+	private List<String>audit_ids;
+   
 	/**
 	 * @return the id
 	 */
@@ -48,5 +50,13 @@ public final class Token {
 		return "Token [id=" + id + ", Issued_at=" + issued_at + ", expires=" + expires + ", tenant="
           + tenant + "]";
 	}
+
+  public List<String> getAudit_ids() {
+    return audit_ids;
+  }
+
+  public void setAudit_ids(List<String> audit_ids) {
+    this.audit_ids = audit_ids;
+  }
 
 }

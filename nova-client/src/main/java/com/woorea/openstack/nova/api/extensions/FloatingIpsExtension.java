@@ -3,7 +3,7 @@ package com.woorea.openstack.nova.api.extensions;
 import java.util.HashMap;
 import java.util.Map;
 
-
+import com.woorea.openstack.base.client.Entity;
 import com.woorea.openstack.base.client.HttpMethod;
 import com.woorea.openstack.base.client.OpenStackClient;
 import com.woorea.openstack.base.client.OpenStackRequest;
@@ -30,13 +30,13 @@ public class FloatingIpsExtension {
 		
 		private Map<String, String> body;
 			
-		public Allocate(String pool) {
-			super(CLIENT, HttpMethod.POST, "/os-floating-ips", null, FloatingIp.class);
-			body = new HashMap<String, String>();
-			if(pool != null) {
-				body.put("pool", pool);
-			}
-			entity(body, "application/json");
+		public Allocate(FloatingIpPoll pool) {
+			super(CLIENT, HttpMethod.POST, "/os-floating-ips", Entity.json(pool), FloatingIp.class);
+//			body = new HashMap<String, String>();
+//			if(pool != null) {
+//				body.put("pool", pool);
+//			}
+//			entity(body, "application/json");
 		}
 
 	}
@@ -53,7 +53,7 @@ public class FloatingIpsExtension {
 		return new List();
 	}
 	
-	public Allocate allocate(String pool) {
+	public Allocate allocate(FloatingIpPoll pool) {
 		return new Allocate(pool);
 	}
 	

@@ -1,6 +1,9 @@
 package com.woorea.openstack.examples.compute;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.woorea.openstack.base.client.OpenStackSimpleTokenProvider;
 import com.woorea.openstack.examples.ExamplesConfiguration;
 import com.woorea.openstack.keystone.Keystone;
@@ -10,6 +13,8 @@ import com.woorea.openstack.nova.Nova;
 import com.woorea.openstack.nova.model.Flavors;
 import com.woorea.openstack.nova.model.Images;
 import com.woorea.openstack.nova.model.KeyPairs;
+import com.woorea.openstack.nova.model.Network;
+import com.woorea.openstack.nova.model.Networks;
 import com.woorea.openstack.nova.model.Server;
 import com.woorea.openstack.nova.model.ServerForCreate;
 
@@ -42,8 +47,7 @@ public class NovaCreateServer {
       // NovaClient novaClient = new
       // NovaClient(KeystoneUtils.findEndpointURL(access.getServiceCatalog(),
       // "compute", null, "public"), access.getToken().getId());
-      Nova nova = new Nova(ExamplesConfiguration.NOVA_ENDPOINT.concat(tenants
-          .getList().get(0).getId()));
+      Nova nova = new Nova(ExamplesConfiguration.NOVA_ENDPOINT.concat(tenants.getList().get(0).getId()));
       nova.setTokenProvider(new OpenStackSimpleTokenProvider(access.getToken()
           .getId()));
       // novaClient.enableLogging(Logger.getLogger("nova"), 100 * 1024);
@@ -70,15 +74,24 @@ public class NovaCreateServer {
 
       ServerForCreate serverForCreate = new ServerForCreate();
       serverForCreate.setName("woorea");
+      System.out.println("Flavor:" + flavors.getList().get(0).getName());
       serverForCreate.setFlavorRef(flavors.getList().get(0).getId());
-      serverForCreate.setImageRef(images.getList().get(1).getId());
+      
+      System.out.println("Image:" + images.getList().get(2).getName()); 
+      serverForCreate.setImageRef(images.getList().get(2).getId());
+     
+      serverForCreate.getNetworks().add(new ServerForCreate.NetworkForCreate("cc9250f4-fa3e-4550-9cb0-64f862dfe7c5"));
+      System.out.println("Keypair:" + keysPairs.getList().get(0).getName());
       serverForCreate.setKeyName(keysPairs.getList().get(0).getName());
       serverForCreate.getSecurityGroups()
           .add(new ServerForCreate.SecurityGroup("default"));
+      
+      
       // serverForCreate.getSecurityGroups().add(new
       // ServerForCreate.SecurityGroup(securityGroup.getName()));
 
       Server server = nova.servers().boot(serverForCreate).execute();
+      
       System.out.println(server);
 
     } else {

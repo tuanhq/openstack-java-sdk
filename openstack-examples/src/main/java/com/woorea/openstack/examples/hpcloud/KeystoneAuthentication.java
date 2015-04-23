@@ -7,7 +7,7 @@ import com.woorea.openstack.keystone.model.Access;
 
 public class KeystoneAuthentication {
 
-  private static final String KEYSTONE_AUTH_URL = "https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0";
+  private static final String KEYSTONE_AUTH_URL = "http://172.27.4.101:5000/v2.0";
 
   /**
    * @param args

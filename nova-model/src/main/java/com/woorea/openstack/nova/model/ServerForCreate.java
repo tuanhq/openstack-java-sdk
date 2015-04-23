@@ -38,6 +38,21 @@ public class ServerForCreate implements Serializable {
 		}
 		
 	}
+	public static final class NetworkForCreate implements Serializable {
+	  private String uuid;
+	  public NetworkForCreate() {
+     
+    }
+	  public NetworkForCreate(String uuid) {
+	     this.uuid = uuid;
+    }
+	  public String getUuid(){
+	    return this.uuid;
+	  }
+	  public void setUuid(String uuid){
+	    this.uuid = uuid;
+	  }
+	}
 	
 	private String name;
 	
@@ -56,6 +71,8 @@ public class ServerForCreate implements Serializable {
 	private Integer max;
 	
 	private String diskConfig;
+	
+	private List<NetworkForCreate> networks;
 	
 	@JsonProperty("key_name")
 	private String keyName;
@@ -289,4 +306,15 @@ public class ServerForCreate implements Serializable {
 	public void setConfigDrive(boolean configDrive) {
 		this.configDrive = configDrive;
 	}
+
+  public List<NetworkForCreate> getNetworks() {
+    if(this.networks == null) {
+      this.networks = new ArrayList<ServerForCreate.NetworkForCreate>();
+    }
+    return networks;
+  }
+
+  
+
+ 
 }

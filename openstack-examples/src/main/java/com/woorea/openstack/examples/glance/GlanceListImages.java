@@ -44,7 +44,7 @@ public class GlanceListImages {
 		}
 
 		for (Endpoint endpoint : glanceService.getEndpoints()) {
-			Glance glance = new Glance(endpoint.getPublicURL() + "/v1");
+			Glance glance = new Glance(endpoint.getPublicURL() + "/v2.0");
 			glance.setTokenProvider(keystone
 					.getProviderByTenant(ExamplesConfiguration.TENANT_NAME));
 

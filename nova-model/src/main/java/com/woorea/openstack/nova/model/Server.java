@@ -228,7 +228,42 @@ public class Server implements Serializable {
 	@JsonProperty("OS-EXT-AZ:availability_zone")
 	private String availabilityZone;
 	
-	private String uuid;
+	@JsonProperty("OS-SRV-USG:launched_at")
+	private String launched_at;
+	
+	
+	
+	public String getLaunched_at() {
+    return launched_at;
+  }
+
+  public void setLaunched_at(String launched_at) {
+    this.launched_at = launched_at;
+  }
+  @JsonProperty("OS-SRV-USG:terminated_at")
+  private String terminated_at;
+  
+   
+  
+  public String getTerminated_at() {
+    return terminated_at;
+  }
+
+  public void setTerminated_at(String terminated_at) {
+    this.terminated_at = terminated_at;
+  }
+  @JsonProperty("os-extended-volumes:volumes_attached")
+  
+  private List<String> volumes_attached;
+  
+  public List<String> getVolumes_attached() {
+    return volumes_attached;
+  }
+
+  public void setVolumes_attached(List<String> volumes_attached) {
+    this.volumes_attached = volumes_attached;
+  }
+  private String uuid;
 	
 	private String adminPass;
 
