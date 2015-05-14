@@ -1,5 +1,6 @@
 package com.woorea.openstack.keystone.utils;
 
+import java.util.Calendar;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.woorea.openstack.base.client.OpenStackTokenProvider;
@@ -26,7 +27,7 @@ public class KeystoneTokenProvider {
 
 	public Access getAccessByTenant(String tenantName) {
 		Access access = hashTenantAccess.get(tenantName);
-		if (access == null) {
+		if (access == null || Calendar.getInstance().after(access.getToken().getExpires())) {
 			access = keystone.tokens().authenticate(new UsernamePassword(username, password))
 				.withTenantName(tenantName)
 				.execute();

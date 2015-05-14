@@ -1,9 +1,6 @@
 package com.woorea.openstack.examples.compute;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.woorea.openstack.base.client.OpenStackSimpleTokenProvider;
 import com.woorea.openstack.examples.ExamplesConfiguration;
 import com.woorea.openstack.keystone.Keystone;
@@ -13,8 +10,6 @@ import com.woorea.openstack.nova.Nova;
 import com.woorea.openstack.nova.model.Flavors;
 import com.woorea.openstack.nova.model.Images;
 import com.woorea.openstack.nova.model.KeyPairs;
-import com.woorea.openstack.nova.model.Network;
-import com.woorea.openstack.nova.model.Networks;
 import com.woorea.openstack.nova.model.Server;
 import com.woorea.openstack.nova.model.ServerForCreate;
 

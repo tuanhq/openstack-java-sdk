@@ -13,6 +13,18 @@ public class PortForCreate {
 	private String name;
 	@JsonProperty("network_id")
 	private String networkId;
+	
+	@JsonProperty("subnet_id")
+  private String subnetId;
+
+
+    public String getSubnetId() {
+    return subnetId;
+  }
+
+  public void setSubnetId(String subnetId) {
+    this.subnetId = subnetId;
+  }
 
     @JsonProperty("mac_address")
     private String macAddress;
